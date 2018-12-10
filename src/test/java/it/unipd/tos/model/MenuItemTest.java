@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import it.unipd.tos.business.Bill;
 import it.unipd.tos.business.exception.RestaurantBillException;
@@ -33,10 +35,10 @@ public class MenuItemTest {
 	}
 
 	/*
-	 * issue #9 . ordine con >10 ordinazioni
+	 * issue #9 . ordine con 10+ ordinazioni
 	 */
 	@Test
-	public void sum_moreThen10ItemsPrice() {
+	public void sum_more10ItemsPrices() {
 		Bill bill = new Bill();
 
 		ArrayList<MenuItem> order = new ArrayList<MenuItem>();
@@ -59,8 +61,11 @@ public class MenuItemTest {
 		}
 	}
 
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+	
 	/*
-	 * issue #9 . ordine con >10 ordinazioni
+	 * issue #10 . ordine 100+ euro
 	 */
 	@Test
 	public void sum_moreThen100euroOrderSalePrice() {
@@ -75,6 +80,22 @@ public class MenuItemTest {
 		} catch (RestaurantBillException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/*
+	 * issue #10 . ordine con 20+ ordinazioni. Deve ritornare una eccezione
+	 */
+	@Test
+	public void sum_moreThen20ItemsError() throws RestaurantBillException {
+		thrown.expect(RestaurantBillException.class);
+		Bill bill = new Bill();
+
+		ArrayList<MenuItem> order = new ArrayList<MenuItem>();
+		for(int i=0; i<=26; ++i) {
+			order.add(new MenuItem(MenuItem.itemType.Pizze, "Ananas", 1.50));
+		}
+			bill.getOrderPrice(order);
+		
 	}
 
 }
