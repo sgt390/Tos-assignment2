@@ -26,7 +26,7 @@ public class Bill implements RestaurantBill {
          */
         double price = itemsOrdered.stream()
                 .map((item) -> item.price())
-                .reduce(0.0, Double::sum);
+                .reduce(0.0, Double::sum)                                                                                                  ;
 
         /*
          * sconto 10+ pizze. issue #9

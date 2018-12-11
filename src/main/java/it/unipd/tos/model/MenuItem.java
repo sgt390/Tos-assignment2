@@ -14,7 +14,7 @@ public class MenuItem {
     private double price;
 
     public MenuItem(itemType type, String name, double price) {
-        super();
+        this.type = type;
         this.name = name;
         this.price = price;
     }

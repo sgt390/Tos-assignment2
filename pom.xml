@@ -28,19 +28,7 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<configuration>
-						<format>xml</format>
-						<aggregate>true</aggregate>
-						<failsOnError>true</failsOnError>
-						<configLocation>checkstyle.xml</configLocation>
-						<consoleOutput>true</consoleOutput>
-					</configuration>
-					<version>3.0.0</version>
-				</plugin>
-				<plugin>
+					<plugin>
 					<groupId>org.eluder.coveralls</groupId>
 					<artifactId>coveralls-maven-plugin</artifactId>
 					<version>4.3.0</version>
@@ -58,6 +46,28 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.0.0</version>
+					<configuration>
+						<format>xml</format>
+						<aggregate>true</aggregate>
+						<failsOnError>true</failsOnError>
+						<configLocation>checkstyle.xml</configLocation>
+						<consoleOutput>true</consoleOutput>
+					</configuration>
+					<executions>
+					<execution>
+						<id>checkstyle</id>
+						<phase>package</phase>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+				</plugin>
+				
 			</plugins>
 		</pluginManagement>
 	</build>
