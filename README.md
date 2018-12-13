@@ -1,5 +1,5 @@
 # Tos-assignment2
-## Zanatta Stefano 1142897
+## Stefano Zanatta 1142897
 
 Travis CI
 
