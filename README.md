@@ -1,4 +1,6 @@
 # Tos-assignment2
+course on git/ci/docker
+
 ## Stefano Zanatta 1142897
 
 Travis CI
